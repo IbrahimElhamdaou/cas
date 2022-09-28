@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="CAS - Enterprise Single Sign-On for the Web"/>
+    <meta name="keywords" content="authentication, login, cas, central authentication service, web, java, protocol, thymeleaf,
+                   open source, boot, spring, authorization, google, facebook, twitter, higher-ed, enterprise,
+                   access management, single signon, sso, RBAC, ABAC, attributes, SAML, OpenID, openid connect,
+                   JWT, ADFS"/>
+    <meta name="robots" content="index,follow"/>
+
+    
+    
+
+        
+    
+
+
+    
+
+    <script>
+        ((i, s, o, g, r, a, m) => {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-83384532-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../../stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="print" href="../../stylesheets/print.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic&subset=latin-ext,latin' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <title>CAS - Contributor Guidelines</title>
+
+</head>
+
+<body>
+<!-- HEADER -->
+<header class="hidden-sm-down">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-md-2">
+                <a href="../../index.html">
+                    <img class="undecorated" src="../../images/cas_logo.png"/>
+                </a>
+            </div>
+            <div class="col-xs-8 col-md-6">
+                <h1>Enterprise Single Sign-On for All</h1>
+            </div>
+            <div class="hidden-sm-down col-md-4">
+                <a id="forkme_banner" href="https://github.com/apereo/cas">View on GitHub</a>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary bg-dark">
+    <div class="container">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarsExample04">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a href="../../index.html" class="zoom nav-link">Home</a></li>
+                <li class="nav-item"><a href="https://github.com/apereo/cas/releases" class="zoom nav-link">Releases</a></li>
+                <li class="nav-item"><a href="../../Support.html" class="zoom nav-link">Support</a></li>
+                <li class="nav-item"><a href="../../Mailing-Lists.html" class="zoom nav-link">Mailing Lists</a></li>
+                <li class="nav-item">
+                    <a class="zoom nav-link" href="../../Demos.html">Demos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="zoom nav-link dropdown-toggle mr-md-2" href="#" id="cas-versions" data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Versions</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="cas-versions">
+                        
+                        
+                        <a class="dropdown-item" href="/cas/development/">Development</a>
+                        
+                        
+                        
+                        <a class="dropdown-item" href="/cas/6.6.x/">v6.6.x</a>
+                        
+                        
+                        
+                        <a class="dropdown-item" href="/cas/6.5.x/">v6.5.x</a>
+                        
+                        
+
+                    </div>
+                </li>
+                <li class="nav-item"><a href="https://apereo.github.io" target="_blank" class="zoom nav-link">Blog</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 docs-sidebar pb-5" id="sidebar"></div>
+
+
+        <div class="d-none d-xl-block col-xl-2 docs-toc">
+    <div id="pageContents">
+        <ul class="section-nav"></ul>
+    </div>
+</div>
+
+
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 cas-docs-content" role="main">
+
+
+            
+            <div id="dev-doc-info" class="alert alert-danger" role="alert">
+                <h3>WORKERS AHEAD!</h3>
+                <p>You are viewing the <strong>development</strong> documentation for the Apereo CAS server. <strong>The
+                    functionality presented here <a href="https://github.com/apereo/cas/milestones">is not officially released
+                        yet</a></strong>.
+                    This is a work in progress and will be continually updated as development moves forward. <strong>You are
+                        most encouraged to test the changes presented.</strong>
+            </div>
+            
+
+            <section>
+                <nav id="docsNavBar">
+                    <span id="toolbarIcons"></span>
+                </nav>
+
+                <div id="cas-docs-container">
+                    <h1 id="contributor-guidelines">Contributor Guidelines</h1>
+
+<p>We want to start by saying thank you for using CAS. This project is a labor of love, and we appreciate the work done by all
+who catch bugs, make performance improvements and help with documentation. Every contribution is meaningful, so thank you
+for participating. That being said, here are a few guidelines that we ask you to follow so we can successfully address your patch.</p>
+
+<p>The goal of this guide is to, very simply put, help you learn how to catch fish.</p>
+
+<p>Shed all of your fears of making a mistake as part of your contributions to the project. Practice makes perfect and
+we are all here to help you as much as we can so you can ultimately become an independent contributor to the project. It’s OK
+to make mistakes and it does take some time, effort and energy to improve the state of proposals and contributions. So do not be discouraged, keep at it
+and if you find anything that is unclear along the way, do not hesitate to ask questions.</p>
+
+<p>The overarching theme of this guide starts with the following questions:</p>
+
+<ol>
+  <li>What is the Apereo CAS project policy on accepting contributions?</li>
+  <li>How may one, seriously and in a step-wise fashion, get started with contributions?</li>
+</ol>
+
+<h2 id="what-do-i-work-on">What do I work on?</h2>
+
+<p>A certain number of projects in open source try to advertise work items and tasks 
+which they think might be <a href="https://github.com/spring-projects/spring-boot/issues?q=is%3Aopen+is%3Aissue+label%3A%22status%3A+ideal-for-contribution%22">good candidates for contributions</a>. This is generally and often <em>not</em> the Apereo CAS project policy. The policy is much simpler than that.</p>
+
+<p>It goes something like this:</p>
+
+<blockquote>
+  <p>Everything is ideal for contributions.</p>
+</blockquote>
+
+<p>In other words,</p>
+
+<ul>
+  <li>There is no <em>“We vs. You”</em>.</li>
+  <li>There is no <em>“Some folks can only fix certain issues and some can’t”</em>.</li>
+  <li>There is no <em>“Person X made the change; so X must fix it too”</em> (aka code ownership)</li>
+  <li>There is no <em>“I am just a user; you are the developers”</em>.</li>
+</ul>
+
+<p>Of course, if you are a newcomer to the project and have just begun to understand the ins and outs of 
+the <a href="https://apereo.github.io/2017/06/12/cas-codebase-overview/">CAS project codebase</a>, there may certainly 
+be areas in which you might find more comfort to slowly get your feet wet. You’re welcome to <a href="https://apereo.github.io/cas/Mailing-Lists.html">ask for suggestions</a>. For the most part, the work item you wish to work on should be something you find interesting and enjoyable with some degree of practicality.</p>
+
+<p>Remember that you are deploying open source software, which means you have automatically become 
+a project/community member and a potential maintainer, whether you realize it or not. Staying in <em>consume-only</em> mode generally leads to poor results.</p>
+
+<h2 id="what-can-i-work-on">What can I work on?</h2>
+
+<p>All contributions are extremely welcomed with open arms regardless of shape, size, and color. You may be 
+interested in helping with fixing typos, writing documentation, authoring test cases, developing code, squashing bugs, etc. All is welcome.</p>
+
+<p><a href="https://apereo.github.io/2017/03/08/the-myth-of-ga-rel/">More contributions simply equal more confidence</a>.</p>
+
+<p>In other words, if you happen to come across a bothersome use case and/or something you consider a perfect 
+candidate for improvement and attention, you are most definitely, aggressively and wholeheartedly encouraged 
+to spend time and DNA to improve the quality of your Apereo CAS life. There is no point in silent suffering.</p>
+
+<p>If you find that contributing to the project is at the moment out of your reach, don’t 
+worry. There are resources, <a href="https://www.coursera.org/">here</a> and <a href="https://apereo.github.io/cas/Support.html">here</a> that 
+can provide training and support to get you started for the win.</p>
+
+<h2 id="should-i-open-an-issue-first">Should I open an issue first?</h2>
+
+<p>No.</p>
+
+<p>If you have already identified an enhancement or a bug, it is STRONGLY recommended that you simply 
+submit a pull request to address the case. There is no need for special ceremony to create separate 
+issues. The pull request <strong>IS</strong> the issue and it will be tracked and tagged as such. Remember that this is 
+open source software in an open and collaborative community. It’s not “Some folks report issues and some 
+folks fix problems” software. You are for the most part and at all costs encouraged to submit patches that 
+fix the reported issue and remove pain, rather than waiting for someone to come along and fix it. As prescribed, there is no <em>“We vs. You”</em>.</p>
+
+<p>Very simply put:</p>
+
+<blockquote>
+  <p>You are the one you have been waiting for.</p>
+</blockquote>
+
+<p>Remember that doing something about an issue does not necessarily equal to you, the individual contributor, 
+writing code. That is only one of many <a href="https://apereo.github.io/cas/Support.html">possible options</a>. That said, 
+if you’d rather just report and catalog the issue to have others benefit from your discovery, it would be best if 
+you could share the use case and the problem at hand via community mailing lists, chatrooms and the likes of 
+StackOverflow under appropriate tags for easier discovery.</p>
+
+<h2 id="what-if-i-am-not-a-developer">What if I am not a developer?</h2>
+
+<p>If you have already diagnosed a problem or have found a use case for an attractive improvement and feature, 
+we strongly recommend you simply <a href="https://github.com/apereo/cas/graphs/contributors">walk down the path</a> of 
+making that all a reality and <em>contribute</em> back. If you find yourself unable to do so, you will need to find 
+and procure resources that can <a href="https://www.coursera.org/">teach you the how-to</a> 
+or <a href="https://apereo.github.io/cas/Support.html">do it for you</a>. Talk to your institution, company, 
+organization, supervisor, boss, mentor, architect, manager, director, CIO, CTO, CISO, etc and have them procure the right resources for the job.</p>
+
+<p>Reporting an issue and hoping/waiting for someone else to magically come along and spend time, money and energy 
+to provide a fix for you is never an acceptable strategy. Quit waiting for the light at the end of the tunnel and light it yourself.</p>
+
+<p>If you insist on being treated like a user, you then need to revisit and realign 
+expectations with <a href="https://apereo.github.io/cas/Support.html">folks and resources</a> that can provide 
+you with the treatment you need. All of the work that goes into the development of a rich comprehensive 
+software platform is almost exclusively done voluntarily. Therefore, if you have expectations that 
+resemble something of a commercial support agreement with clauses that include promises, guarantees, 
+SLAs and follow-ups, you simply need to level up with an entity that actually provides that sort of functionality.</p>
+
+<h2 id="i-have-an-idea-it-would-be-nice-if">I have an idea; It would be nice if…</h2>
+
+<p>It <em>would</em> be nice. No, it would be fantastic, superb, marvelous and ultra great. Please consider 
+that lone ideas by themselves are more or less pointless unless they are executed and realized in 
+concrete form. There is no shortage of ideas; good or bad. There is a shortage of folks who are ready 
+and serious enough to execute and deliver the idea. This is very much a call to action and one that 
+allows you to graduate from a think-tank into a doer, a contributor, a promoter and a leader. If you 
+consider something to be worth doing, a very best thing you can do is to demonstrate concretely and 
+seriously, that it is, in fact, worth doing. Doing something about an issue or request does not 
+necessarily equal to you, the individual contributor, writing code. That is only one of many possible 
+options. We hope that you consider that as a good starting place and when all else fails, 
+consider <a href="https://apereo.github.io/cas/Support.html">reaching out for support</a>.</p>
+
+<h2 id="i-found-a-problem-should-i">I found a problem. Should I…?</h2>
+
+<p>Yes, you should. If you find something that you consider to be odd, wrong or wobbly behavior <em><strong>and</strong></em> 
+have found an alternative solution that removes the obstacle or delivers the case, please consider reporting 
+and sharing that improvement in form of a patch to the project so it can be discussed and potentially 
+accepted. There is no downside to this, as you engage and collaborate with community members concretely and 
+in action; It is quite possible that they may have found a better solution and might be able to share that with 
+you for longer prosperity. Be not afraid; the worst that could happen is someone stepping up to help you out with better options.</p>
+
+<h2 id="how-do-i-know-whos-working-on-what">How do I know who’s working on what?</h2>
+
+<ul>
+  <li>Follow the <em>WIP Pattern</em> and submit <a href="https://ben.straub.cc/2015/04/02/wip-pull-request/">early pull requests</a>. This is the recommended strategy from Github:</li>
+</ul>
+
+<blockquote>
+  <p>Pull Requests are a great way to start a conversation of a feature, so start one as soon as possible- 
+even before you are finished with the code. Your team can comment on the feature as it evolves, 
+instead of providing all their feedback at the very end.</p>
+</blockquote>
+
+<p>Or put another way:</p>
+
+<blockquote>
+  <p>You’re opening pull requests when you start work, not when you’re finished.</p>
+</blockquote>
+
+<p>There is of course the alternative: <a href="https://apereo.github.io/cas/Mailing-Lists.html">ask</a>.</p>
+
+<h2 id="how-frequently-should-i-make-progress">How frequently should I make progress?</h2>
+
+<p>If you do have a pending pull request available and one that might also be tagged as <em>WIP</em>, you are most 
+welcome to keep pushing to the underlying branch as frequently as you prefer. There is nothing spammy or 
+annoying about making progress on a <em>WIP</em> pull request. Nobody is going to get mad at you for making progress 
+and pushing changes, (That’s what email filters, etc are for), so do not ever worry about annoying other
+contributors and/or project members with the frequency of your progress notifications. Continue working on 
+the use case as often as you like and be sure to keep asking for feedback as you make progress.</p>
+
+<div class="alert alert-success">
+  <strong>Inactivity</strong><br />Note that contributions and pull requests that remain inactive for a 
+certain period of time get tagged as <i>Pending</i> and will be eventually closed automatically. Staleness 
+is only allowed to a certain degree, but worry not. Any stale closed pull request can always be reopened and progress resumed without data loss.
+</div>
+
+<h2 id="can-i-backport-a-change-to-a-maintenance-branch">Can I backport a change to a maintenance branch?</h2>
+
+<p>Yes, absolutely. Provided the change fits the scope of the maintenance branch and its tracking release and assuming 
+the branch is still under care, you are more than welcome to move changes across the codebase various branches as 
+much as needed to remove pain and improve.</p>
+
+<div class="alert alert-success">
+  <strong>Port Forward</strong><br />Remember that changes applied to previous branches that target CAS versions in 
+maintenance mode <b>MUST</b> be ported forward to the master branch as well, via a separate pull request.
+</div>
+
+<h2 id="what-if-the-change-is-too-big">What if the change is too big?</h2>
+
+<p>Start by reviewing the <a href="https://apereo.github.io/cas/developer/Release-Policy.html">release policy</a>. The change 
+you have in mind should fit the scope of the release that is planned. If 
+needed, <a href="https://apereo.github.io/cas/Mailing-Lists.html">please discuss</a> the release schedule and policy with other 
+community members to find alternative solutions and strategies for delivery.</p>
+
+<h2 id="is-it-worth-it">Is it worth it?</h2>
+
+<p>The CAS project generally operates based on its own <a href="https://apereo.github.io/cas/developer/Maintenance-Policy.html">maintenance policy</a>. Before 
+making changes, you want to cross-check the CAS deployment you have today and ensure it is still and to what extent considered viable and 
+maintained by the project.</p>
+
+<h2 id="how-do-i-get-on-the-roadmap">How do I get on the roadmap?</h2>
+
+<p>By simply delivering the change and having it get merged into the codebase relevant branches. There is no predefined 
+roadmap for the project. Work items get completed based on the community’s availability, interest, time and money. The 
+roadmap is the item <strong>you</strong> intend to work on, build and ultimately deliver to the project as a pull request.</p>
+
+<h2 id="are-there-plans-to">Are there plans to…?</h2>
+
+<p>No. There are no plans.</p>
+
+<p>CAS project development activity is largely based on <strong>volunteer time and contributions</strong>. Officially, 
+there are no contracts, commitments, timelines, schedules, or funding to plan for changes. Planning for 
+future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship 
+seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such 
+plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling 
+and resources. CAS open-source development is never done in vacuums. Generally speaking, work items are 
+done when contributors propose, discuss and show up with pull requests or when funding and sponsorship 
+for a change is made available. If you would like to see a change or feature in CAS, you’re most welcome 
+to discuss and contribute or fund someone else’s time and make it worth their while to do that for you.</p>
+
+<div class="alert alert-info"><strong>The Hitchhiker's Guide to the CAS Galaxy</strong><p>A <i>problem</i> is 
+only a problem, if  and when something is done about the problem. Otherwise and by definition, there is no problem.</p></div>
+
+<h2 id="how-often-are-changes-released">How often are changes released?</h2>
+
+<p>You can review the <a href="https://github.com/apereo/cas/milestones">release schedule</a>. Note
+that the dates specified for each milestone are somewhat tentative and may be pushed around depending on need and severity.</p>
+
+<p>As for general contributions, patches in form of pull requests are generally merged as 
+fast as possible provided they are in <em>good health</em>. This means a given pull request must pass 
+a series of automated checks that examine style, tests and such before it becomes eligible for 
+a merge. If your proposed pull request does not yet have the green marking, worry not. Keep 
+pushing to the branch that contains your change to auto-update the pull request and make life green again.</p>
+
+<p>If you find that the project is not moving forward at a pace you find reasonable, simply <em>ping</em> 
+the pull request and gently remind someone to step forward and review the issue with you.</p>
+
+<h2 id="how-fast-can-i-consume-the-change">How fast can I consume the change?</h2>
+
+<p>Typically, <code class="language-plaintext highlighter-rouge">SNAPSHOT</code> releases are published by the automatic <a href="https://github.com/apereo/cas/actions">CI process</a>. As 
+soon as a patch is merged, you want to track its build status and once it turns green, you should be good to update 
+snapshots in your build script. Practically, this process can take up to 50 minutes or less. Refer to the <code class="language-plaintext highlighter-rouge">README</code> 
+file of the build script and the project documentation to learn how you may update the overlay to take advantage of the change.</p>
+
+<p>This practically involves running the build with a <code class="language-plaintext highlighter-rouge">-U</code> or <code class="language-plaintext highlighter-rouge">--refresh-dependencies</code> command for Apache Maven and Gradle respectively.</p>
+
+<h2 id="can-you-cut-a-release-this-week">Can you cut a release this week?</h2>
+
+<p>No. The CAS project generally follows a somewhat fixed release schedule, and the schedule cannot 
+change per customer/client/project/user/vendor demands at random as publishing a release generally 
+requires quite a bit of management, scheduling and coordination. Remember that release dates are 
+always <em>subject to change</em>, but only if more time is needed to fix an issue or test a scenario based 
+on the feedback received from community users and testers. Of course, this is all based on a best-effort 
+basis and depends on how much funding and energy is available to work out fixes or test various 
+scenarios. If you are planning to go to production and cannot wait for the CAS release schedule, you 
+can build the project from sources and publish artifacts to your own artifact repositories to take 
+control of the release schedule yourself. For additional guarantees, please see the project license.</p>
+
+<h2 id="why-isnt-my-proposal-accepted-and-merged-yet">Why isn’t my proposal accepted and merged yet?</h2>
+
+<p>Patches submitted to the codebase in form of pull requests are generally reviewed as quickly as possible 
+and most are often accepted. If you find your contribution to take longer
+than <em>usual</em> to be merged, it’s possible that the proposed changeset violates one or more of the following principles:</p>
+
+<ul>
+  <li>The patch fails to pass automated unit or integration tests.</li>
+  <li>The patch fails to adhere to the project’s styling guidelines.</li>
+  <li>The patch fails to provide adequate unit or integration tests for the proposed changes.</li>
+  <li>The patch fails to provide an explanation or objective for the proposed changes.</li>
+  <li>The patch has remained stale for quite a while without any sign of contributor activity.</li>
+  <li>The patch modifies system behavior without consensus, collective feedback or internal validation as unit or integration tests.</li>
+  <li>The patch modifies a large number files, more than one could practically review in a timely manner.</li>
+  <li>The patch presents a feature or behavior that is deemed too specialized or custom with unwarranted assumptions.</li>
+  <li>The patch introduces (i.e. formatting) changes that are not related to the proposal’s objective.</li>
+  <li>The patch violates the general design principles of the codebase or introduces inconsistent/contradictory concepts that are difficult to maintain.</li>
+</ul>
+
+<div class="alert alert-success">
+  <strong>Remember</strong><br />If you need help, please ask and seek clarification as often 
+as you prefer. The shared objective of a pull request is not to judge or point fingers but to 
+collaborate and make progress. Remain positive, optimistic with a healthy attitude towards comments and constructive feedback.
+</div>
+
+<p>There may be accidental mistakes or infrastructure mishaps along the way. You’re most welcome to ping the pull request and provide an
+explanation and/or comment. In most, if not all, cases the patch is accepted.</p>
+
+<h2 id="functional-build">Functional Build</h2>
+
+<p>Before you do anything else, make sure you have a <a href="Build-Process.html">functional build</a>.</p>
+
+<h2 id="how-do-i-do-this">How do I do this?</h2>
+
+<p>To successfully finish this exercise you need:</p>
+
+<ol>
+  <li><a href="https://git-scm.com/downloads">Git</a></li>
+  <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>, eclipse or NetBeans (Depending on the change, <code class="language-plaintext highlighter-rouge">vim</code> may be perfectly fine too)</li>
+  <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java (JDK)</a></li>
+</ol>
+
+<h3 id="fork-the-repository">Fork the repository</h3>
+
+<p>First thing you need to do is to fork the CAS repository under your own account. The 
+CAS repository is hosted on Github and is available <a href="https://github.com/apereo/cas">here</a>.</p>
+
+<h3 id="clone-repositories">Clone Repositories</h3>
+
+<p>There are much faster ways of cloning the codebase, but let’s keep it simple for now:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>git clone <span class="nt">--recursive</span> git@github.com:apereo/cas.git
+<span class="nb">cd </span>cas
+git remote add github-username git@github.com:github-username/cas.git
+git checkout master
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Next, if you simply list the remotes you should see:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>origin  git@github.com:apereo/cas.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:apereo/cas.git <span class="o">(</span>push<span class="o">)</span>
+github-username  git@github.com:github-username/cas.git <span class="o">(</span>fetch<span class="o">)</span>
+github-username  git@github.com:github-username/cas.git <span class="o">(</span>push<span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="fetch-submodules">Fetch Submodules</h3>
+
+<p>You can use <code class="language-plaintext highlighter-rouge">git submodule update --init --recursive</code> to fetch all submodules linked to the repository.</p>
+
+<h3 id="workflow">Workflow</h3>
+
+<p>You want to isolate your changes inside individual topics branches and never 
+commit anything to the <code class="language-plaintext highlighter-rouge">master</code> branch. The workflow more or less is the following:</p>
+
+<ol>
+  <li>Create topic branch.</li>
+  <li>Make changes and test.</li>
+  <li>Commit changes to branch.</li>
+  <li>Go back to #2 until you are satisfied.</li>
+</ol>
+
+<div class="alert alert-success">
+  <strong>Functional Build</strong><br />You may want to ensure the codebase can be 
+built locally from source. <a href="https://apereo.github.io/cas/developer/Build-Process.html">Follow this guide</a> to learn more.
+</div>
+
+<h3 id="create-branch">Create Branch</h3>
+
+<p>To create a topic branch for the change, execute:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre>git status
+git checkout <span class="nt">-b</span> my-topic-branch-which-fixes-something
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="commit-changes">Commit Changes</h3>
+
+<p>When you’re ready to commit changes after having made changes, execute:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git add <span class="nt">--all</span> <span class="o">&amp;&amp;</span> git commit <span class="nt">-am</span> <span class="s2">"This change fixes a problem"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">--all</code> flag adds <em>all</em> modified files in the project directory. If you 
+wish to pick and choose, you can either individually add files via a <code class="language-plaintext highlighter-rouge">git add fileName</code> command 
+one at a time or perhaps, it might be best to simply opt for a GUI client such 
+as <a href="https://www.sourcetreeapp.com/">SourceTree</a> or <a href="https://github.com/gitextensions/gitextensions">Git Extensions</a>.</p>
+
+<h3 id="push-changes">Push Changes</h3>
+
+<p>Push your changes from the <em>local</em> branch to a <em>remote</em> branch of your own fork:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>git push github-username my-topic-branch-which-fixes-something
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="submit-pull-request">Submit Pull Request</h3>
+
+<p>Next, create a pull request based on your branch to the CAS project. In this particular 
+case, the <em>target</em> branch is the <code class="language-plaintext highlighter-rouge">master</code> branch because your own branch was created off of the <code class="language-plaintext highlighter-rouge">master</code> branch.</p>
+
+<h3 id="destination-branch">Destination Branch</h3>
+
+<p>The CAS codebase dedicates specific branches to feature and major releases of the 
+software (i.e. <code class="language-plaintext highlighter-rouge">5.3.x</code>, <code class="language-plaintext highlighter-rouge">6.0.x</code>, etc). These branches will continue to live on in maintenance 
+mode until the release is declared EOL and form the basis of follow-up patch releases and 
+maintenance cycles. When you are preparing a pull request, please be sure to select the appropriate 
+target branch for the patch to ensure your change can be included in the coming maintenance release as scheduled.</p>
+
+<div class="alert alert-success">
+<strong>Port Forward</strong><br />Once more, please remember that changes applied to 
+previous branches that target CAS versions in maintenance mode <b>MUST</b> be ported 
+forward to the master branch as well, via a separate pull request.
+</div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        CAS is supported by the <a href="https://www.apereo.org/">Apereo Foundation</a>.
+    </div>
+</footer>
+
+<script>
+    let pageSection = '';
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+
+<script src="../../javascripts/URI.js"></script>
+<script src="../../javascripts/main.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>
